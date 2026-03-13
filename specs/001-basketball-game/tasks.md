@@ -19,11 +19,11 @@
 
 **Purpose**：建立目錄結構、初始化相依套件、設定測試工具
 
-- [ ] T001 依 `plan.md` 建立目錄骨架：`docs/js/`、`docs/css/`、`tests/unit/`、`tests/e2e/`
-- [ ] T002 建立 `package.json`，安裝 Vitest（unit）與 Playwright（e2e）開發相依
-- [ ] T003 [P] 建立 Vitest 設定檔 `vitest.config.js`（含 jsdom 環境）
-- [ ] T004 [P] 建立 Playwright 設定檔 `playwright.config.js`（含本地 serve 指令）
-- [ ] T005 執行 `git status` 驗證階段完成，確認所有設定檔已加入
+- [X] T001 依 `plan.md` 建立目錄骨架：`docs/js/`、`docs/css/`、`tests/unit/`、`tests/e2e/`
+- [X] T002 建立 `package.json`，安裝 Vitest（unit）與 Playwright（e2e）開發相依
+- [X] T003 [P] 建立 Vitest 設定檔 `vitest.config.js`（含 jsdom 環境）
+- [X] T004 [P] 建立 Playwright 設定檔 `playwright.config.js`（含本地 serve 指令）
+- [X] T005 執行 `git status` 驗證階段完成，確認所有設定檔已加入
 
 ---
 
@@ -31,11 +31,11 @@
 
 **Purpose**：所有使用者故事開始前必須完成的共用基礎，不含業務邏輯
 
-- [ ] T006 建立 `docs/index.html`，包含 `<canvas>` 元素、得分板 DOM 節點與腳本引用骨架
-- [ ] T007 [P] 建立 `docs/css/style.css`，定義畫布置中、全版面背景、得分板樣式
-- [ ] T008 [P] 建立物理常數與模組匯出骨架 `docs/js/physics.js`（僅常數，不含實作）
-- [ ] T009 [P] 建立空模組骨架：`docs/js/game.js`、`docs/js/input.js`、`docs/js/ui.js`、`docs/js/storage.js`
-- [ ] T010 執行 `git status` 驗證階段完成，基礎骨架已就緒
+- [X] T006 建立 `docs/index.html`，包含 `<canvas>` 元素、得分板 DOM 節點與腳本引用骨架
+- [X] T007 [P] 建立 `docs/css/style.css`，定義畫布置中、全版面背景、得分板樣式
+- [X] T008 [P] 建立物理常數與模組匯出骨架 `docs/js/physics.js`（僅常數，不含實作）
+- [X] T009 [P] 建立空模組骨架：`docs/js/game.js`、`docs/js/input.js`、`docs/js/ui.js`、`docs/js/storage.js`
+- [X] T010 執行 `git status` 驗證階段完成，基礎骨架已就緒
 
 **Checkpoint**：Phase 2 完成後，方可進入各使用者故事
 
@@ -49,19 +49,19 @@
 
 ### Tests for User Story 1（行為變更必填，先寫失敗）
 
-- [ ] T011 [P] [US1] 在 `tests/unit/physics.test.js` 撰寫 `calculateTrajectory(x0, y0, vx, vy, t)` 失敗測試（重力、DAMPING 常數驗證）
-- [ ] T012 [P] [US1] 在 `tests/unit/physics.test.js` 撰寫 `isBallInHoop(ballPos, hoopPos, hoopRadius)` 失敗測試（進球判斷邊界值）
-- [ ] T013 [P] [US1] 在 `tests/e2e/game.spec.js` 撰寫拖曳投籃 → 球飛行 → 進框得分的 Playwright 失敗測試
+- [X] T011 [P] [US1] 在 `tests/unit/physics.test.js` 撰寫 `calculateTrajectory(x0, y0, vx, vy, t)` 失敗測試（重力、DAMPING 常數驗證）
+- [X] T012 [P] [US1] 在 `tests/unit/physics.test.js` 撰寫 `isBallInHoop(ballPos, hoopPos, hoopRadius)` 失敗測試（進球判斷邊界值）
+- [X] T013 [P] [US1] 在 `tests/e2e/game.spec.js` 撰寫拖曳投籃 → 球飛行 → 進框得分的 Playwright 失敗測試
 
 ### Implementation for User Story 1
 
-- [ ] T014 [US1] 在 `docs/js/physics.js` 實作 `calculateTrajectory()`（Euler 積分，使用 `GRAVITY`、`DAMPING` 常數）
-- [ ] T015 [P] [US1] 在 `docs/js/physics.js` 實作 `isBallInHoop()`（`Math.hypot` 近似偵測，搭配由上往下穿越判斷）
-- [ ] T016 [US1] 在 `docs/js/input.js` 實作 `InputState` 與 `pointerdown`/`pointermove`/`pointerup` 事件處理（滑鼠/觸控統一，`getBoundingClientRect()` 正規化座標，反向 Y 軸）
-- [ ] T017 [US1] 在 `docs/js/game.js` 實作 `Ball`、`Hoop` 初始化、主遊戲迴圈（`requestAnimationFrame`）與球飛行狀態管理（`isFlying` 旗標防重複投球）
-- [ ] T018 [US1] 在 `docs/js/ui.js` 實作 Canvas 渲染（籃球、籃框、瞄準線繪製）與進球閃光特效（持續約 0.5 秒）
-- [ ] T019 [US1] 執行 `npx vitest run tests/unit/physics.test.js`，確認所有 US1 unit 測試通過
-- [ ] T020 [US1] 執行 Playwright e2e 投籃測試，確認通過；更新 `tasks.md` 勾選狀態與 `git status`
+- [X] T014 [US1] 在 `docs/js/physics.js` 實作 `calculateTrajectory()`（Euler 積分，使用 `GRAVITY`、`DAMPING` 常數）
+- [X] T015 [P] [US1] 在 `docs/js/physics.js` 實作 `isBallInHoop()`（`Math.hypot` 近似偵測，搭配由上往下穿越判斷）
+- [X] T016 [US1] 在 `docs/js/input.js` 實作 `InputState` 與 `pointerdown`/`pointermove`/`pointerup` 事件處理（滑鼠/觸控統一，`getBoundingClientRect()` 正規化座標，反向 Y 軸）
+- [X] T017 [US1] 在 `docs/js/game.js` 實作 `Ball`、`Hoop` 初始化、主遊戲迴圈（`requestAnimationFrame`）與球飛行狀態管理（`isFlying` 旗標防重複投球）
+- [X] T018 [US1] 在 `docs/js/ui.js` 實作 Canvas 渲染（籃球、籃框、瞄準線繪製）與進球閃光特效（持續約 0.5 秒）
+- [X] T019 [US1] 執行 `npx vitest run tests/unit/physics.test.js`，確認所有 US1 unit 測試通過
+- [X] T020 [US1] 執行 Playwright e2e 投籃測試，確認通過；更新 `tasks.md` 勾選狀態與 `git status`
 
 **Checkpoint**：US1 可獨立開啟 `docs/index.html` 並完整驗證投籃互動
 
@@ -75,16 +75,16 @@
 
 ### Tests for User Story 2（行為變更必填，先寫失敗）
 
-- [ ] T021 [P] [US2] 在 `tests/unit/score.test.js` 撰寫 `GameSession` 狀態管理失敗測試（`shotsUsed` 遞增、`isOver` 觸發、`hitRate` 計算）
-- [ ] T022 [P] [US2] 在 `tests/e2e/game.spec.js` 撰寫投完 10 球 → 遊戲結束畫面出現 → 「再玩一次」重置的 Playwright 失敗測試
+- [X] T021 [P] [US2] 在 `tests/unit/score.test.js` 撰寫 `GameSession` 狀態管理失敗測試（`shotsUsed` 遞增、`isOver` 觸發、`hitRate` 計算）
+- [X] T022 [P] [US2] 在 `tests/e2e/game.spec.js` 撰寫投完 10 球 → 遊戲結束畫面出現 → 「再玩一次」重置的 Playwright 失敗測試
 
 ### Implementation for User Story 2
 
-- [ ] T023 [US2] 在 `docs/js/game.js` 實作 `GameSession`（`score`、`shotsUsed`、`hits`、`isOver`、`hitRate` 計算屬性，狀態轉移：PLAYING → OVER）
-- [ ] T024 [US2] 在 `docs/js/ui.js` 實作得分板即時更新（`得分：{score}`、`剩餘球數：{shotsLeft}`）與遊戲結束畫面（標題、得分、命中率、「再玩一次」按鈕）
-- [ ] T025 [US2] 在 `docs/js/game.js` 實作「再玩一次」按鈕事件，重置 `GameSession` 並回到 PLAYING 狀態
-- [ ] T026 [US2] 執行 `npx vitest run tests/unit/score.test.js`，確認所有 US2 unit 測試通過
-- [ ] T027 [US2] 執行 Playwright e2e 計分測試，確認通過；更新 `tasks.md` 勾選狀態與 `git status`
+- [X] T023 [US2] 在 `docs/js/game.js` 實作 `GameSession`（`score`、`shotsUsed`、`hits`、`isOver`、`hitRate` 計算屬性，狀態轉移：PLAYING → OVER）
+- [X] T024 [US2] 在 `docs/js/ui.js` 實作得分板即時更新（`得分：{score}`、`剩餘球數：{shotsLeft}`）與遊戲結束畫面（標題、得分、命中率、「再玩一次」按鈕）
+- [X] T025 [US2] 在 `docs/js/game.js` 實作「再玩一次」按鈕事件，重置 `GameSession` 並回到 PLAYING 狀態
+- [X] T026 [US2] 執行 `npx vitest run tests/unit/score.test.js`，確認所有 US2 unit 測試通過
+- [X] T027 [US2] 執行 Playwright e2e 計分測試，確認通過；更新 `tasks.md` 勾選狀態與 `git status`
 
 **Checkpoint**：US1 + US2 可各自獨立驗證；完整 10 球遊戲流程可正常運作
 
@@ -98,16 +98,16 @@
 
 ### Tests for User Story 3（行為變更必填，先寫失敗）
 
-- [ ] T028 [P] [US3] 在 `tests/unit/storage.test.js` 撰寫 `saveHighScore(score)` / `loadHighScore()` 失敗測試（正常存取、localStorage 不可用時退化為記憶體暫存）
-- [ ] T029 [P] [US3] 在 `tests/e2e/game.spec.js` 撰寫最高分跨頁面重整持久保留的 Playwright 失敗測試
+- [X] T028 [P] [US3] 在 `tests/unit/storage.test.js` 撰寫 `saveHighScore(score)` / `loadHighScore()` 失敗測試（正常存取、localStorage 不可用時退化為記憶體暫存）
+- [X] T029 [P] [US3] 在 `tests/e2e/game.spec.js` 撰寫最高分跨頁面重整持久保留的 Playwright 失敗測試
 
 ### Implementation for User Story 3
 
-- [ ] T030 [US3] 在 `docs/js/storage.js` 實作 `saveHighScore(score)` 與 `loadHighScore()`（使用 `localStorage` 鍵 `basketball_high_score`；不可用時靜默退化為記憶體暫存值 `0`）
-- [ ] T031 [US3] 在 `docs/js/ui.js` 遊戲結束畫面新增最高分顯示（`最高紀錄：{highScore}`）與條件顯示「🎉 新紀錄！」特效
-- [ ] T032 [US3] 在 `docs/js/game.js` 整合 `storage.js`，於遊戲結束時呼叫 `saveHighScore` 並傳遞最新最高分至 `ui.js`
-- [ ] T033 [US3] 執行 `npx vitest run tests/unit/storage.test.js`，確認所有 US3 unit 測試通過
-- [ ] T034 [US3] 執行 Playwright e2e 最高分測試，確認通過；更新 `tasks.md` 勾選狀態與 `git status`
+- [X] T030 [US3] 在 `docs/js/storage.js` 實作 `saveHighScore(score)` 與 `loadHighScore()`（使用 `localStorage` 鍵 `basketball_high_score`；不可用時靜默退化為記憶體暫存值 `0`）
+- [X] T031 [US3] 在 `docs/js/ui.js` 遊戲結束畫面新增最高分顯示（`最高紀錄：{highScore}`）與條件顯示「🎉 新紀錄！」特效
+- [X] T032 [US3] 在 `docs/js/game.js` 整合 `storage.js`，於遊戲結束時呼叫 `saveHighScore` 並傳遞最新最高分至 `ui.js`
+- [X] T033 [US3] 執行 `npx vitest run tests/unit/storage.test.js`，確認所有 US3 unit 測試通過
+- [X] T034 [US3] 執行 Playwright e2e 最高分測試，確認通過；更新 `tasks.md` 勾選狀態與 `git status`
 
 **Checkpoint**：所有三個故事可各自獨立驗證；完整遊戲包含計分與最高分功能
 
@@ -115,11 +115,11 @@
 
 ## Final Phase: Polish & Cross-Cutting
 
-- [ ] T035 [P] 建立 `README.md`，包含遊戲說明、本地開發指令（`npx serve docs`）、測試執行指令與 GitHub Pages 部署方式
-- [ ] T036 執行完整測試套件 `npx vitest run && npx playwright test`，修正所有失敗項目
-- [ ] T037 [P] 在 `tests/e2e/game.spec.js` 補充觸控事件模擬測試，確認行動裝置操作與桌面滑鼠操作等效（FR-002、SC-005）
-- [ ] T038 [P] 在 `docs/js/game.js` 確認 `requestAnimationFrame` 迴圈效能（≥ 30 fps），驗證頁面載入後 < 3 秒可投球（SC-001、SC-002）
-- [ ] T039 執行提交前完整測試，記錄通過結果，更新所有已完成任務的 `tasks.md` 勾選狀態
+- [X] T035 [P] 建立 `README.md`，包含遊戲說明、本地開發指令（`npx serve docs`）、測試執行指令與 GitHub Pages 部署方式
+- [X] T036 執行完整測試套件 `npx vitest run && npx playwright test`，修正所有失敗項目
+- [X] T037 [P] 在 `tests/e2e/game.spec.js` 補充觸控事件模擬測試，確認行動裝置操作與桌面滑鼠操作等效（FR-002、SC-005）
+- [X] T038 [P] 在 `docs/js/game.js` 確認 `requestAnimationFrame` 迴圈效能（≥ 30 fps），驗證頁面載入後 < 3 秒可投球（SC-001、SC-002）
+- [X] T039 執行提交前完整測試，記錄通過結果，更新所有已完成任務的 `tasks.md` 勾選狀態
 
 ---
 

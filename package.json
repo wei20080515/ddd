@@ -1,0 +1,19 @@
+{
+  "name": "basketball-game",
+  "version": "1.0.0",
+  "description": "Browser-based basketball shooting game",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:unit": "vitest run tests/unit",
+    "test:e2e": "playwright test",
+    "dev": "npx serve docs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@vitest/coverage-v8": "^1.6.1",
+    "jsdom": "^24.1.3",
+    "serve": "^14.2.6",
+    "vitest": "^1.6.1"
+  }
+}
