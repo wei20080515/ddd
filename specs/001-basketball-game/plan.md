@@ -1,37 +1,37 @@
-# 實作計畫：[FEATURE]
+# 實作計畫：001-basketball-game
 
-**分支**：`[###-feature-name]` | **日期**：[DATE] | **規格**：[link]
-**輸入**：來自 `/specs/[###-feature-name]/spec.md` 的功能規格
-
-**說明**：此模板由 `/speckit.plan` 指令填入。執行流程請見 `.specify/templates/plan-template.md`。
+**分支**：`001-basketball-game` | **日期**：2026-03-13 | **規格**：`specs/001-basketball-game/spec.md`
+**輸入**：來自 `specs/001-basketball-game/spec.md` 的功能規格
 
 ## 摘要
 
-[摘錄自 spec：核心需求 + 預計技術方案（以最小可行方案為優先）]
+製作一款瀏覽器端投籃遊戲。玩家透過滑鼠拖曳或觸控滑動操控投籃，球依拋物線飛行，進框得分。每局 10 球，有計分板與遊戲結束畫面（含命中率、最高分、再玩一次）。最高分儲存於 localStorage。
+
+**技術方案**：純 HTML5 Canvas + 原生 JavaScript，零依賴，靜態網站部署至 GitHub Pages 的 `docs/` 資料夾。測試使用 Vitest（unit）+ Playwright（e2e）。
 
 ## 技術背景
 
-**語言/版本**：[例如 Python 3.11、TypeScript 5.x 或 NEEDS CLARIFICATION]  
-**主要相依**：[例如 FastAPI、React、Vite 或 NEEDS CLARIFICATION]  
-**儲存**：[如適用，例如 PostgreSQL、檔案系統、N/A]  
-**測試工具**：[例如 pytest、vitest、playwright 或 NEEDS CLARIFICATION]  
-**目標平台**：[例如 Linux、瀏覽器、行動裝置或 NEEDS CLARIFICATION]  
-**專案型態**：[例如 library/cli/web/mobile 或 NEEDS CLARIFICATION]  
-**效能目標**：[領域指標或 NEEDS CLARIFICATION]  
-**限制條件**：[領域限制或 NEEDS CLARIFICATION]  
-**規模範圍**：[使用者量級、畫面數、服務數或 NEEDS CLARIFICATION]
+**語言/版本**：HTML5、CSS3、JavaScript（ES2020+，無 TypeScript，無建置步驟）  
+**主要相依**：無執行時期依賴；開發依賴 Vitest、Playwright、serve  
+**儲存**：`localStorage`（僅儲存最高分）  
+**測試工具**：Vitest（unit）、Playwright（e2e）  
+**目標平台**：瀏覽器（Chrome、Firefox、Safari）；桌面與行動裝置  
+**專案型態**：web（靜態前端）  
+**效能目標**：動畫 ≥ 30 fps；頁面載入後 < 3 秒可投球  
+**限制條件**：無後端；無帳號系統；MVP 固定 10 球、固定籃框位置  
+**規模範圍**：單人單頁面應用，2 個畫面狀態（PLAYING / OVER）
 
 ## Constitution Check
 
 *Gate：進入 Phase 0 前必須通過；Phase 1 設計後需再次檢查。*
 
-- [ ] 規格優先：`spec.md` 已存在且核准，範圍可追溯至需求與使用者故事。
-- [ ] 語言一致：規格與計畫內容使用繁體中文（zh-TW）。
-- [ ] MVP 與簡單方案：切片可獨立交付，且方案優先最小可行、避免過度設計。
-- [ ] TDD 策略：行為變更工作已定義先失敗測試，再實作，再通過的流程與測試層級。
-- [ ] 網站預設策略：若為網站專案，已確認以前端靜態網站為預設並優先 GitHub Pages 部署。
-- [ ] 規格保護：Implement 階段不得刪除或覆蓋 `spec.md`、`plan.md`、`tasks.md`。
-- [ ] 可重現性：每個階段均定義可重現 git 驗證點與驗證命令。
+- [x] 規格優先：`spec.md` 已存在（狀態：草稿），範圍可追溯至 FR-001～FR-010 及三個使用者故事。
+- [x] 語言一致：`spec.md` 與本 `plan.md` 均使用繁體中文（zh-TW）。
+- [x] MVP 與簡單方案：P1（基本投籃）可獨立交付驗證；採純 Canvas + 原生 JS 最小可行方案。
+- [x] TDD 策略：物理邏輯（`physics.js`）、計分（`score.js`）、儲存（`storage.js`）先以 Vitest 撰寫失敗測試，再實作，再通過；e2e 以 Playwright 驗證整合流程。
+- [x] 網站預設策略：已確認以靜態前端（`docs/` 資料夾）為唯一部署單元，優先 GitHub Pages。
+- [x] 規格保護：Implement 階段明確禁止刪除 `spec.md`、`plan.md`、`tasks.md`（見 Engineering Standards）。
+- [x] 可重現性：已於「階段性 Git 驗證點」節定義各階段驗證命令。
 
 ## 階段性 Git 驗證點（必填）
 
@@ -46,60 +46,50 @@
 ### 文件（本功能）
 
 ```text
-specs/[###-feature]/
+specs/001-basketball-game/
 ├── plan.md              # 本檔（/speckit.plan 產出）
-├── research.md          # Phase 0 產出
-├── data-model.md        # Phase 1 產出
-├── quickstart.md        # Phase 1 產出
-├── contracts/           # Phase 1 產出
+├── research.md          # Phase 0 產出 ✓
+├── data-model.md        # Phase 1 產出 ✓
+├── quickstart.md        # Phase 1 產出 ✓
+├── contracts/           # Phase 1 產出 ✓
+│   └── ui-contract.md
 └── tasks.md             # Phase 2 產出（/speckit.tasks）
 ```
 
 ### 原始碼（儲存庫根目錄）
 
-<!--
-  請以實際專案結構取代下列範例；刪除未使用選項。
-  若為網站專案，預設以靜態前端結構優先。
--->
-
 ```text
-# [未使用請移除] 選項 1：單一專案（預設）
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+# 選項 2：網站專案（靜態前端，GitHub Pages）
+docs/
+├── index.html
+├── css/
+│   └── style.css
+└── js/
+    ├── game.js       # 主遊戲迴圈、狀態管理（GameSession）
+    ├── physics.js    # 拋物線軌跡計算、進球碰撞偵測
+    ├── input.js      # 滑鼠/觸控輸入正規化
+    └── ui.js         # 得分板、遊戲結束畫面、進球特效
 
 tests/
-├── contract/
-├── integration/
-└── unit/
+├── unit/
+│   ├── physics.test.js
+│   ├── score.test.js
+│   └── storage.test.js
+└── e2e/
+    └── game.spec.js
 
-# [未使用請移除] 選項 2：網站專案（預設先採靜態前端）
-frontend/
-├── public/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── assets/
-└── tests/
-
-# 若確有需求再加入 backend/
-
-# [未使用請移除] 選項 3：行動端 + API
-api/
-└── [同 backend 結構]
-
-ios/ 或 android/
-└── [平台模組、流程與測試]
+package.json
+README.md
 ```
 
-**結構決策**：[記錄採用的結構與原因，並說明為何符合最小可行原則]
+**結構決策**：採靜態前端單層結構，無後端，符合 MVP 原則。`docs/` 資料夾為 GitHub Pages 部署根目錄，無需建置步驟。JS 依職責拆為 4 個模組（game、physics、input、ui），保持單一責任、易於 unit 測試。
 
 ## 複雜度追蹤
 
 > **僅在 Constitution Check 例外時填寫**
 
+本計畫無 Constitution Check 違規，所有決策均符合最小可行方案原則，無需額外記錄。
+
 | 違規項目 | 必要原因 | 被拒絕的更簡方案與理由 |
 |----------|----------|------------------------|
-| [例如額外服務] | [目前必要性] | [為何既有方案不足] |
+| （無）   | —        | —                      |
